@@ -42,8 +42,13 @@
     * [GenericSamplePage.java](../master/src/selenium/pages/GenericSamplePage.java)
     * [AgeSamplePage.java](../master/src/selenium/pages/AgeSamplePage.java)
     * [AgeSubmittedSamplePage.java](../master/src/selenium/pages/AgeSubmittedSamplePage.java)
-    
+
+ 
 ---
+### Individual Tasks:
+ * [Task1](../master/src/selenium/tasks/Task1.java)    
+---
+
 ### Switching to Cucumber project
 1. open Idea
 2. File -> New -> Project from version control -> git 
