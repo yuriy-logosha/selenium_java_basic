@@ -10,7 +10,9 @@
 * Opening a page and printing out url/page title:
     * [Sample1.java](../master/src/selenium/sample/Sample1.java)
     * [Sample1Task.java](../master/src/selenium/sample/Sample1Task.java)
-
+* Locators (id, class, name):
+    * [Sample2.java](../master/src/selenium/sample/Sample2.java)
+    * [Sample2Task.java](../master/src/selenium/sample/Sample2Task.java)
 ---
 ### Bonuses in case of boredom
 * Driver Navigation:
