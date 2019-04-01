@@ -34,8 +34,8 @@ public class Sample2Task {
 
     @Test
     public void findElementByID() throws Exception {
-//         TODO:
 //         get text "Heading 2 text" using id
+        System.out.println(driver.findElement(By.id("heading_2")).getText());
     }
 
     @Test
