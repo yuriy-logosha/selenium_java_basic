@@ -63,7 +63,7 @@ public class Sample3Task {
     public void failTask() throws Exception {
         List<WebElement> elements = driver.findElements(By.className("test"));
         for (WebElement element : elements) {
-            assertFalse(element.getText().contains("190"));
+            assertFalse(element.getText().contains("number: \"190"));
         }
 //        TODO:
 //        check that none of items with class "test"
