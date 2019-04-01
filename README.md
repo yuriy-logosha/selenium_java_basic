@@ -19,18 +19,26 @@
 * Actions (click, send keys):
     * [Sample4.java](../master/src/selenium/sample/Sample4.java)
     * [Sample4Task.java](../master/src/selenium/sample/Sample4Task.java)
----
-### Bonuses in case of boredom
-* Driver Navigation:
-    * [extra1.java](../master/src/selenium/sample/extra/extra1.java)
-    * [extra1Task.java](../master/src/selenium/sample/extra/extra1Task.java)
-* Using different browsers:
-    * [extra2.java](../master/src/selenium/sample/extra2.java)
-    * [extra2Task.java](../master/src/selenium/sample/extra2Task.java)
- * Calendar picker:   
-    * [Sample7Task.java](../master/src/selenium/sample/Sample7Task.java) -> `chooseDateViaCalendarBonus()` and `chooseDateViaTextBoxBonus()`
- * Page Object + Page Factory:
-    * [Task3Bonus.java](../master/src/selenium/tasks/Task3Bonus.java)
+* Alerts:
+    * [Sample5.java](../master/src/selenium/sample/Sample5.java)
+    * [Sample5Task.java](../master/src/selenium/sample/Sample5Task.java)
+* Locators (xPath, CSS):
+    * [Sample6.java](../master/src/selenium/sample/Sample6.java)
+    * [Sample6Task.java](../master/src/selenium/sample/Sample6Task.java)
+* Actions (checkbox, radio button and option selector) + bonus of calendar:
+    * [Sample7.java](../master/src/selenium/sample/Sample7.java)
+    * [Sample7Task.java](../master/src/selenium/sample/Sample7Task.java)
+* Styles:
+    * [Sample8.java](../master/src/selenium/sample/Sample8.java)
+    * [Sample8Task.java](../master/src/selenium/sample/Sample8Task.java)
+* Waits:
+    * [Sample9.java](../master/src/selenium/sample/Sample9.java)
+    * [Sample9Task.java](../master/src/selenium/sample/Sample9Task.java)
+* Into to Page Object:    
+    * [Sample10.java](../master/src/selenium/sample/Sample10.java)
+    * [GenericSamplePage.java](../master/src/selenium/pages/GenericSamplePage.java)
+    * [AgeSamplePage.java](../master/src/selenium/pages/AgeSamplePage.java)
+    * [AgeSubmittedSamplePage.java](../master/src/selenium/pages/AgeSubmittedSamplePage.java)
     
 ---
 ### Switching to Cucumber project
