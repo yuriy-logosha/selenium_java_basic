@@ -42,11 +42,6 @@ public class Sample3 {
     public void assertEqualsFailingExampleString() throws Exception {
         String expected = "Not base page";
         String actual = driver.findElement(By.id("heading_1")).getText();
-
-        // fails:
-//        org.junit.ComparisonFailure:
-//        Expected :Not base page
-//        Actual   :Base page
         assertEquals(expected, actual);
     }
 
@@ -108,7 +103,7 @@ public class Sample3 {
     @Test
     public void assertEqualsExampleWithCustomError() throws Exception {
         try {
-            assertEquals("custom message", 3, 4);
+            assertEquals("Expected 3 to be 4", 3, 4);
         } catch (AssertionError e) {
             System.err.println("We failed with custom message”");
             e.printStackTrace();
