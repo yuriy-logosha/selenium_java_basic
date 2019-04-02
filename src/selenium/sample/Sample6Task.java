@@ -62,6 +62,6 @@ public class Sample6Task {
         assertEquals("Test Text 3", driver.findElement(By.cssSelector("#test3>p:nth-child(1)")).getText());
 //        1-2 ways to find text: "This is also a button"
         assertEquals("This is also a button",
-                driver.findElement(By.cssSelector("#buttonId")).getAttribute("value"));
+                driver.findElement(By.cssSelector("input[name='randomButton2']")).getAttribute("value"));
     }
 }
