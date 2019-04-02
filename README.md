@@ -52,7 +52,11 @@
 ### Individual Tasks:
  * [Task1](../master/src/selenium/tasks/Task1.java) - please update the url to https://kristinek.github.io/site/tasks/enter_a_number    
  * [Task2](../master/src/selenium/tasks/Task2.java) - please update the url to https://kristinek.github.io/site/tasks/provide_feedback     
- ---
+---
+#### Test on locators
+[click here](https://docs.google.com/forms/d/e/1FAIpQLSfVURa4wYHQrKUzXNwg5JeduAfpBuGQkpmMuHIF6Wfd9ivWEQ/viewform?usp=sf_link)
+
+---
  ### Bonuses in case of boredom
  * Driver Navigation:
      * [extra1.java](../master/src/selenium/sample/extra/extra1.java)
