@@ -10,7 +10,7 @@
 ---
 ### Feedback
 
-[Please leave a message, you oppinion is importand to us :)](https://trello.com/b/bel4IMNA/bootcamp)
+[Please leave a message, you oppinion is importand to us :)](https://trello.com/invite/b/bel4IMNA/0340db73765032bfae547143b61e58d2/bootcamp)
 
 ---
 ### Samples and SampleTask so far...
