@@ -2,12 +2,16 @@
 [see wiki](https://github.com/KristineK/selenium_java_basic/wiki/Setup)
 
 ---
-### How to add, commit and push changes to 
-
+### GIT
 [see wiki for Create-a-branch](https://github.com/KristineK/selenium_java_basic/wiki/Create-a-branch)
 
 [see wiki for Git-add-commit-pust](https://github.com/KristineK/selenium_java_basic/wiki/Git-add-commit-pust)
-   
+
+---
+### Feedback
+
+[Please leave a message, you oppinion is importand to us :)](https://trello.com/b/bel4IMNA/bootcamp)
+
 ---
 ### Samples and SampleTask so far...
 * Opening a page and printing out url/page title:
