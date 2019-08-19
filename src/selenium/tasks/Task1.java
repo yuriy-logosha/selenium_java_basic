@@ -80,6 +80,21 @@ public class Task1 {
         WebElement errorMsg = driver.findElement(By.id("ch1_error"));
         assertEquals("Number is too big", errorMsg.getText());
     }
+    @Test
+    public void errorOnNumber666() {
+
+//        BUG: if I enter number 666 no errors where seen
+//        TODO
+//        enter number which is too big (above 100), check that correct error is seen
+        WebElement inputText =  driver.findElement(By.id("numb"));
+        inputText.sendKeys("666");
+        WebElement submitBtn = driver.findElement(By.xpath("//button[@class='w3-btn w3-orange w3-margin']"));
+        submitBtn.click();
+        WebElement errorMsg = driver.findElement(By.id("ch1_error"));
+        //Thread.sleep(1000);
+
+        assertTrue(errorMsg.isDisplayed()); ;
+    }
 
     @Test
     public void correctSquareRootWithoutRemainder() throws InterruptedException {
