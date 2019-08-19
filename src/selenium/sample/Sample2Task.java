@@ -51,6 +51,7 @@ public class Sample2Task {
         System.out.println(driver.findElement(By.className("test")).getText());
 //         TODO:
 //         get first text of class "test" (should be "Test Text 1")
+
     }
 
     @Test
