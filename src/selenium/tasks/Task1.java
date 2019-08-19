@@ -93,7 +93,9 @@ public class Task1 {
         WebElement errorMsg = driver.findElement(By.id("ch1_error"));
         //Thread.sleep(1000);
 
-        assertTrue(errorMsg.isDisplayed()); ;
+
+        assertTrue(errorMsg.isDisplayed());
+
     }
 
     @Test
