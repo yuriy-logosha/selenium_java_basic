@@ -74,7 +74,7 @@ public class Sample9 {
 
     @Test
     public void explicitWaitExample2() throws Exception {
-//        check that the element is not visible on page
+///        check that the element is not visible on page
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@id='magic_text']/*[text()=\"What is this magic? It's dev magic~\"]")));
         magicTextCheck();
     }

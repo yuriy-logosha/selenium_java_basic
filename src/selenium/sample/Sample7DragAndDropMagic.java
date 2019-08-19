@@ -31,7 +31,7 @@ public class Sample7DragAndDropMagic {
             String filePath = basePath + "/lib/drag_and_drop_helper.js";
 
 
-            //JQuery can ONLY work with id and css , xpath does NOT work with it.
+            ///JQuery can ONLY work with id and css , xpath does NOT work with it.
 
             StringBuffer buffer = new StringBuffer();
             String line;

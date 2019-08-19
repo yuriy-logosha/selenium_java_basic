@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class Sample6Task {
     WebDriver driver;
 
-    // method which is being run before each test
+    /// method which is being run before each test
     @Before
     public void startingTests() throws Exception {
         // from Sample 1:

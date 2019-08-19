@@ -11,7 +11,7 @@ public class Sample1 {
 
     @Test
     public void goToHomepage() throws Exception {
-        //define driver
+        ///define driver
         System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 

@@ -13,7 +13,7 @@ import java.util.List;
 public class Sample2Task {
     WebDriver driver;
 
-    // method which is being run before each test
+    /// method which is being run before each test
     @Before
     public void startingTests() throws Exception {
         // from Sample 1:

@@ -40,7 +40,7 @@ public class Sample9Task {
         TimeUnit.MILLISECONDS.sleep(500);
 //         * 2) check that button does not appear,
         assertFalse(startGreen.isDisplayed());
-//         * but loading text is seen instead   "Loading green..."
+///         * but loading text is seen instead   "Loading green..."
         WebElement loadingGreen = driver.findElement(By.cssSelector("#loading_green"));
         assertTrue(loadingGreen.isDisplayed());
 //         * 3) check that both button

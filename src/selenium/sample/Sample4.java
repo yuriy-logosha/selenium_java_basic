@@ -79,7 +79,7 @@ public class Sample4 {
 
         assertEquals(textArea.getText(), originalTextInTextArea); // checking that getText is "This is a text area"
         assertEquals(textArea.getAttribute("value"), originalTextInTextArea + newTextOne);
-        // checking that value is "This is a text area" + " sending some keys"
+        /// checking that value is "This is a text area" + " sending some keys"
 
         textArea.clear();
 

@@ -85,7 +85,7 @@ public class Sample3 {
     @Test
     public void failExampleWithCustomError() throws Exception {
         fail("I want this test to fail, so will!");
-        // will throw an java.lang.AssertionError: I want this test to fail, so will!
+        /// will throw an java.lang.AssertionError: I want this test to fail, so will!
     }
 
     @Test

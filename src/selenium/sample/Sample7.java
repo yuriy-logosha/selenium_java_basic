@@ -19,7 +19,7 @@ public class Sample7 {
     WebDriver driver;
     String base_url = "https://kristinek.github.io/site/examples/actions";
 
-    // method which is being run before each test
+    /// method which is being run before each test
     @Before
     public void startingTests() throws Exception {
         // from Sample 1:

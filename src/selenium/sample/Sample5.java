@@ -17,7 +17,7 @@ public class Sample5 {
     // method which is being run before each test
     @Before
     public void startingTests() throws Exception {
-        // from Sample 1:
+        /// from Sample 1:
         String libWithDriversLocation = System.getProperty("user.dir") + "\\lib\\";
         System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
         // declaration above:

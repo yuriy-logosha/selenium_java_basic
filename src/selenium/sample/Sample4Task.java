@@ -50,7 +50,7 @@ public class Sample4Task {
         assertTrue(driver.findElement(By.id("clear_result_button_number")).isEnabled());
 //        click on "Clear Result"
         driver.findElement(By.id("clear_result_button_number")).click();
-//        check that the text is still (""), but it is not displayed
+///        check that the text is still (""), but it is not displayed
         assertEquals("", driver.findElement(By.id("result_number")).getText());
         assertFalse(driver.findElement(By.id("result_number")).isDisplayed());
     }
