@@ -30,7 +30,6 @@ public class Task1 {
         driver.quit();
     }
 
-/*
 
     @Test
     public void errorOnText() throws Exception {
@@ -92,7 +91,7 @@ public class Task1 {
         assertEquals("", driver.findElement(By.id("ch1_error")).getText());
 
         sleep(5000);
-    }*/
+    }
 
     @Test
     public void correctSquareRootWithoutRemainder() throws Exception {
@@ -101,11 +100,14 @@ public class Task1 {
 //        then and press submit and check that correct no error is seen and check that square root is calculated correctly
         WebElement textArea = driver.findElement(By.id("numb"));
         String sqTest = "64";
-        Alert alert = driver.switchTo().alert();
+
 
         textArea.sendKeys(sqTest);
         driver.findElement(By.className("w3-btn")).click();
 
+
+        Alert alert = driver.switchTo().alert();
+        assertEquals("Square root of 64 is 8.00", alert.getText());
         alert.accept();
 
         System.out.println(driver.findElement(By.id("ch1_error")).getText());
@@ -117,9 +119,26 @@ public class Task1 {
     }
 
     @Test
-    public void correctSquareRootWithRemainder() {
+    public void correctSquareRootWithRemainder() throws Exception {
 //        TODO
 //        enter a number between 50 and 100 digit in the input (square root of which doesn't have a remainder, e.g. 1.732.. is square root of 3) and press submit,
 //        then check that correct no error is seen and check that square root is calculated correctly
+        WebElement textArea = driver.findElement(By.id("numb"));
+        String sqTest = "74";
+
+
+        textArea.sendKeys(sqTest);
+        driver.findElement(By.className("w3-btn")).click();
+
+
+        Alert alert = driver.switchTo().alert();
+        assertEquals("Square root of 74 is 8.60", alert.getText());
+        alert.accept();
+
+        //System.out.println(driver.get(alert.getText()));
+
+        System.out.println(driver.findElement(By.id("ch1_error")).getText());
+        assertEquals("", driver.findElement(By.id("ch1_error")).getText());
+        sleep(5000);
     }
 }
