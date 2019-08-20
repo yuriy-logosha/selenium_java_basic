@@ -98,7 +98,7 @@ public class Sample9Task {
     }
 
     @Test
-    public void loadGreenAndBlueBonus() {
+    public void loadGreenAndBlueBonus() throws Exception{
         /* TODO:
          * 0) wait until button to load green and blue appears
          * 1) click on start loading green and blue button
@@ -108,6 +108,10 @@ public class Sample9Task {
          * 		but loading text is seen instead for blue and success for green is seen
          * 5) check that both button and loading text is not seen, success is seen instead
          */
+        WebDriverWait wait = (WebDriverWait) new WebDriverWait(driver, 10).ignoring(StaleElementReferenceException.class);
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#start_green_and_blue")));
+        WebElement startGreenAndBlue = driver.findElement(By.cssSelector("#start_green_and_blue"));
+        startGreenAndBlue.click();
     }
 
 }

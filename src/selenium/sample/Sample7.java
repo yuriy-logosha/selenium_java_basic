@@ -111,32 +111,30 @@ public class Sample7 {
 //    go back 10 month
         cal.add(Calendar.MONTH, -10);
         String result = new SimpleDateFormat("MM/15/yyyy").format(cal.getTime());
-
         WebElement dateBox = driver.findElement(By.id("vfb-8"));
         assertEquals("", dateBox.getAttribute("value"));
-
         dateBox.click();
         WebElement dateWidget = driver.findElement(By.id("ui-datepicker-div"));
+
 //    go back 10 month in calendar on page
         for (int i = 0; i < 10; i++) {
             dateWidget.findElement(By.className("ui-datepicker-prev")).click();
         }
 //    select date 15
         dateWidget.findElement(By.xpath("//a[text()='15']")).click();
-
         assertEquals(result, dateBox.getAttribute("value"));
         dateBox.clear();
+
     }
 
     @Test
     public void chooseDateViaTextBox() throws Exception {
         String dateToEnter = "12/15/2014";
-
         WebElement dateBox = driver.findElement(By.id("vfb-8"));
         assertEquals("", dateBox.getAttribute("value"));
-
         dateBox.clear();
         dateBox.sendKeys(dateToEnter);
         assertEquals(dateToEnter, dateBox.getAttribute("value"));
+
     }
 }
