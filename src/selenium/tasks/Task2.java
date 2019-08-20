@@ -24,6 +24,7 @@ public class Task2 {
 
     @Test
     public void initialFeedbackPage() throws Exception {
+
 //         TODO:
 //         check that all field are empty and no tick are clicked
 //         "Don't know" is selected in "Genre"

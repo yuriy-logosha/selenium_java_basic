@@ -20,9 +20,7 @@ public class Sample7DragAndDropMagic {
             driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
 
             JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeAsyncScript(
-                    jQueryLoader);
-
+            js.executeAsyncScript(jQueryLoader);
             js.executeScript("jQuery(function($) { " + " $('input[name=\"q\"]').val('bada-bing').closest('form').submit(); "
                     + " }); ");
 
