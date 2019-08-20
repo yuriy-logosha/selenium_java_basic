@@ -49,7 +49,7 @@ public class Sample7 {
             checkBox.click();
             assertFalse(checkBox.isSelected()); // checkboxes are NOT selected
         }
-
+        //Thread.sleep(10000);
         WebElement option3 = driver.findElement(By.cssSelector(".w3-check[value='Option 3'][type='checkbox']"));
         assertFalse(option3.isSelected());
         option3.click();
@@ -66,7 +66,7 @@ public class Sample7 {
             radioButton.click();
             assertTrue(radioButton.isSelected()); // radio are selected
         }
-
+        //Thread.sleep(10000);
         WebElement option2 = driver.findElement(By.cssSelector(".w3-check[value='Option 2'][type='radio'"));
         assertFalse(option2.isSelected());
         option2.click();

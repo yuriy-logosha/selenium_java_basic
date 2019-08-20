@@ -41,6 +41,9 @@ public class Sample5 {
         Alert alert = driver.switchTo().alert();
         assertEquals("Booooooooo!", alert.getText());
 
+        Thread.sleep(5000);
+
+
         alert.accept();
         assertEquals("This page is alerted", driver.findElement(By.id("heading")).getText());
     }
@@ -50,7 +53,7 @@ public class Sample5 {
         driver.findElement(By.className("w3-red")).click();
         Alert alert = driver.switchTo().alert();
         assertEquals("I am an alert box!", alert.getText());
-
+        Thread.sleep(5000);
         alert.accept();
         assertEquals("", driver.findElement(By.id("textForAlerts")).getText());
     }
@@ -61,7 +64,7 @@ public class Sample5 {
         driver.findElement(By.className("w3-teal")).click();
         Alert alert = driver.switchTo().alert();
         assertEquals("Press a button!", alert.getText());
-
+        Thread.sleep(5000);
         alert.accept();
         assertEquals("Why on earth have you agreed to it?!", driver.findElement(By.id("textForAlerts")).getText());
     }
@@ -71,7 +74,7 @@ public class Sample5 {
         driver.findElement(By.className("w3-teal")).click();
         Alert alert = driver.switchTo().alert();
         assertEquals("Press a button!", alert.getText());
-
+        Thread.sleep(5000);
         alert.dismiss();
         assertEquals("You have dared to deny me!!!", driver.findElement(By.id("textForAlerts")).getText());
     }

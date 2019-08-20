@@ -108,7 +108,7 @@ public class Sample3 {
             System.err.println("We failed with custom message”");
             e.printStackTrace();
         }
-//        We failed with custom message”
+  //        We failed with custom message”
 //        java.lang.AssertionError: custom message expected:<3> but was:<4>
     }
 }
