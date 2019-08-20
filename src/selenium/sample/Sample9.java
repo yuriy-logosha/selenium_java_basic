@@ -70,6 +70,7 @@ public class Sample9 {
 //        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("asd")));
 //        driver.findElement(By.xpath("//*[@id='magic_text']/*[text()=\"What is this magic? It's dev magic~\"]"));
         magicTextCheck();
+        System.out.println("Done");
     }
 
     @Test
