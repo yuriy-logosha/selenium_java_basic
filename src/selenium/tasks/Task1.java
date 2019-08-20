@@ -86,7 +86,6 @@ public class Task1 {
 
         textBox.sendKeys(enterKeys);
         buttonSubmit.click();
-
         Alert alert = driver.switchTo().alert();
         assertEquals("Square root of 81 is 9.00", alert.getText());
         alert.accept();
