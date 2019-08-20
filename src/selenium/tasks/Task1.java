@@ -3,8 +3,15 @@ package selenium.tasks;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.awt.*;
+
+import static org.junit.Assert.assertEquals;
 
 public class Task1 {
     WebDriver driver;
@@ -24,27 +31,56 @@ public class Task1 {
     }
 
     @Test
-    public void errorOnText() {
+    public void errorOnText() throws InterruptedException {
 //        TODO
 //        enter a text instead of a number, check that correct error is seen
+
+
+        driver.findElement(By.id("numb")).sendKeys("Text");
+        driver.findElement(By.className("w3-btn")).click();
+        assertEquals("Please enter a number", driver.findElement(By.id("ch1_error")).getText());
+        System.out.println(driver.findElement(By.id("ch1_error")).getText());
+        Thread.sleep(10000);
     }
 
     @Test
-    public void errorOnNumberTooSmall() {
+    public void errorOnNumberTooSmall() throws InterruptedException {
 //        TODO
 //        enter number which is too small (below 50), check that correct error is seen
+        driver.findElement(By.id("numb")).sendKeys("47");
+        driver.findElement(By.className("w3-btn")).click();
+        assertEquals("Number is too small", driver.findElement(By.id("ch1_error")).getText());
+        System.out.println(driver.findElement(By.id("ch1_error")).getText());
+        Thread.sleep(10000);
     }
 
     @Test
-    public void errorOnNumberTooBig() {
-
-//        BUG: if I enter number 666 no errors where seen
-//        TODO
+    public void errorOnNumberTooBig() throws InterruptedException {
+        //        TODO
 //        enter number which is too big (above 100), check that correct error is seen
+        driver.findElement(By.id("numb")).sendKeys("700");
+        driver.findElement(By.className("w3-btn")).click();
+        assertEquals("Number is too big", driver.findElement(By.id("ch1_error")).getText());
+        System.out.println(driver.findElement(By.id("ch1_error")).getText());
+        Thread.sleep(10000);
+//        BUG: if I enter number 666 no errors where seen
+        driver.findElement(By.id("numb")).clear();
+        driver.findElement(By.id("numb")).sendKeys("666");
+        driver.findElement(By.className("w3-btn")).click();
+        assertEquals("",driver.findElement(By.id("ch1_error")).getText());
+        System.out.println(driver.findElement(By.id("ch1_error")).getText());
+        Thread.sleep(10000);
     }
 
     @Test
-    public void correctSquareRootWithoutRemainder() {
+    public void correctSquareRootWithoutRemainder() throws InterruptedException {
+        driver.findElement(By.id("numb")).sendKeys("81");
+        driver.findElement(By.className("w3-btn")).click();
+        Alert alert = driver.switchTo().alert();
+        assertEquals("Square root of 81 is 9.00", alert.getText());
+
+        alert.accept();
+        assertEquals("",driver.findElement(By.id("")));
 //        TODO
 //        enter a number between 50 and 100 digit in the input (square root of which doesn't have a remainder, e.g. 2 is square root of 4),
 //        then and press submit and check that correct no error is seen and check that square root is calculated correctly
