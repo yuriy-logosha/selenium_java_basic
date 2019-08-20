@@ -14,7 +14,7 @@ import static junit.framework.TestCase.assertEquals;
 public class Task1 {
     WebDriver driver;
 
-    
+
 
     @Before
     public void openPage() {
