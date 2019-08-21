@@ -108,6 +108,36 @@ public class Sample9Task {
          * 		but loading text is seen instead for blue and success for green is seen
          * 5) check that both button and loading text is not seen, success is seen instead
          */
+    	WebDriverWait wait = (WebDriverWait) new WebDriverWait(driver, 10);
+    	wait.until(ExpectedConditions.elementToBeClickable(By.id("start_green_and_blue")));
+        WebElement startGreenAndBlue = driver.findElement(By.cssSelector("#start_green_and_blue"));
+        startGreenAndBlue.click();
+        
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("loading_green_without_blue")));
+        WebElement loadingGreenNoBlue = driver.findElement(By.id("loading_green_without_blue"));
+        assertFalse(startGreenAndBlue.isDisplayed());
+        assertTrue(loadingGreenNoBlue.isDisplayed());
+        
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("loading_green_with_blue")));
+        WebElement loadingBlueWithGreen = driver.findElement(By.id("loading_green_with_blue"));
+        assertFalse(startGreenAndBlue.isDisplayed());
+        assertTrue(loadingBlueWithGreen.isDisplayed());
+        assertTrue(loadingGreenNoBlue.isDisplayed());
+        
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("loading_blue_without_green")));
+        WebElement greenSuccess = driver.findElement(By.id("loading_blue_without_green"));
+        assertFalse(startGreenAndBlue.isDisplayed());
+        assertFalse(loadingGreenNoBlue.isDisplayed());
+        assertTrue(loadingBlueWithGreen.isDisplayed());
+        assertTrue(greenSuccess.isDisplayed());
+        
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("finish_green_and_blue")));
+        WebElement finishAll = driver.findElement(By.id("finish_green_and_blue"));
+        assertFalse(startGreenAndBlue.isDisplayed());
+        assertFalse(loadingGreenNoBlue.isDisplayed());
+        assertFalse(loadingBlueWithGreen.isDisplayed());
+        assertFalse(greenSuccess.isDisplayed());
+        assertTrue(finishAll.isDisplayed());
     }
 
 }
