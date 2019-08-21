@@ -44,6 +44,8 @@ public class Task2 {
 
         assertEquals("", driver.findElement(By.id("fb_age")).getText());
 
+        assertEquals("", driver.findElement(By.name("comment")).getText());
+
 
 
         List<WebElement> checkBoxes = driver.findElements(By.name("language"));
@@ -107,7 +109,19 @@ public class Task2 {
 //         fill the whole form, click "Send"
 
         driver.findElement(By.id("fb_name")).sendKeys("Marusja");
-driver.findElement(By.id("fb_age")).sendKeys("26");
+        driver.findElement(By.id("fb_age")).sendKeys("26");
+        List<WebElement> checkBox = driver.findElements(By.className("w3-check"));
+        checkBox.get(2).click();
+        List<WebElement> radioButtons = driver.findElements(By.className("w3-radio"));
+        radioButtons.get(1).click();
+
+        Select dropdown = new Select (driver.findElement(By.id("like_us")));
+        dropdown.selectByIndex(2);
+
+        driver.findElement(By.name("comment")).sendKeys("Hello!!!");
+
+        System.out.println("");
+
 
 
 
