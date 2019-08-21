@@ -44,7 +44,9 @@ public class Task2<checkBoxes> {
 
         assertEquals("", driver.findElement(By.id("fb_age")).getText());
 
-        //check that all field are empty
+        assertEquals("", driver.findElement(By.name("comment")).getText());
+
+        //check that all fields are empty
 
 
         List<WebElement> checkBoxes = driver.findElements(By.name("language")); //FIND CHECKBOXES
@@ -124,9 +126,9 @@ public class Task2<checkBoxes> {
 
         assertEquals("rgba(255, 255, 255, 1)", noButton.getCssValue("color"));
 
-       //(green with white letter and red with white letters)
+        //(green with white letter and red with white letters)
 
-
+    }
 
         @Test
         public void notEmptyFeedbackPage() throws Exception {
@@ -134,19 +136,49 @@ public class Task2<checkBoxes> {
 //         TODO:
 //         fill the whole form, click "Send"
 //
-      WebElement textArea = driver.findElement(By.id("numb"));  ///find text area 1
+            WebElement nameArea = driver.findElement(By.id("fb_name"));  ///find text area 1
+
+            String newTextOne = "Mike"; //enter text "text" in area 1
+
+            nameArea.sendKeys(newTextOne); // sending keys "text"
 
 
-            //
-            //        String newTextOne = "text"; //enter text "text" in area 1
-            //
-            //        textArea.sendKeys(newTextOne); // sending keys "text"
-            //
-            //        driver.findElement(By.className("w3-btn")).click(); //click on submit button
-            //
-            //        assertEquals("Please enter a number", driver.findElement(By.id("ch1_error")).getText());
-            //
-            //        //assert actual end expected error messages are same
+            WebElement ageArea = driver.findElement(By.id("fb_age")); //find text area2
+
+            String newAge = "20"; //enter text "age" in area 1
+
+            ageArea.sendKeys(newAge); // sending keys "text"
+
+
+            //find checkbox and tick it
+
+            List<WebElement> checkBox = driver.findElements(By.className("w3-check")); //FIND checkboxes
+
+            checkBox.get(1).click();
+
+
+            List<WebElement> radioBox = driver.findElements(By.className("w3-radio")); //FIND radioboxes
+
+            radioBox.get(0).click();
+
+
+            Select dropdown = new Select(driver.findElement(By.id("like_us")));
+
+            dropdown.selectByIndex(1); //choose dropdown GOOD
+
+
+            WebElement commentArea = driver.findElement(By.name("comment"));  //find comment text area
+
+            String commentText = "Everything is good!"; //enter comment text
+
+            commentArea.sendKeys(commentText); // sending keys "comment text"
+
+            //System.out.printf("");
+
+
+        }
+
+
 
 //         check fields are filled correctly
 //         check button colors
@@ -156,4 +188,3 @@ public class Task2<checkBoxes> {
 
 
 
-    }}
