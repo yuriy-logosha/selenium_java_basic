@@ -61,4 +61,10 @@ public class ListPage {
 	public void clickDeletePerson(int index) {
 		people.get(index).findElement(By.className("closebtn")).click();
 	}
+	
+	public void deleteAllPersons() {
+		while(people.size() > 0) {
+			clickDeletePerson(0);
+		}
+	}
 }
