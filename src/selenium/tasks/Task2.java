@@ -24,10 +24,10 @@ public class Task2 {
         driver.get("https://kristinek.github.io/site/tasks/provide_feedback");
     }
 
-   // @After
-  //  public void closeBrowser() {
-  //      driver.quit();
-  //  }
+    @After
+    public void closeBrowser() {
+        driver.quit();
+    }
 
     @Test
     public void initialFeedbackPage() throws Exception {
@@ -44,6 +44,7 @@ public class Task2 {
         WebElement MaleRadio = driver.findElement(By.xpath("//div[4]//input[1]"));
         WebElement FemaleRadio = driver.findElement(By.xpath("//div[4]//input[2]"));
         WebElement UnknownRadio = driver.findElement(By.xpath("//div[4]//input[3]"));
+        Select dropdown = new Select(driver.findElement(By.id("like_us")));
 
         //Checking Login, Password and Comment fields are empty
         assertEquals(NameField.getText(), "");
@@ -72,12 +73,12 @@ public class Task2 {
         assertTrue(FemaleRadio.isSelected());
 
         //Check dropdown
-        //Select dropdown = new Select(driver.findElement(By.id("like_us")));
-        //assertEquals("Choose your option", dropdown.getFirstSelectedOption().getText());
+        assertEquals("Choose your option", dropdown.getFirstSelectedOption().getText());
+
 
         // Check color of button and button letter
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/button")).getCssValue("background-color"),"rgba(33, 150, 243, 1)");
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/button")).getCssValue("text-decoration-color"),"rgb(255, 255, 255)");
+        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/button")).getCssValue("background-color"), "rgba(33, 150, 243, 1)");
+        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/button")).getCssValue("text-decoration-color"), "rgb(255, 255, 255)");
 
     }
 
@@ -94,29 +95,30 @@ public class Task2 {
 
         //Check all fields is empty
         WebElement NameField = driver.findElement(By.id("name"));
-        assertEquals(NameField.getText(),"");
+        assertTrue((NameField.getText().equals(""))||(NameField.getText().equals("null")));
+
 
         WebElement AgeField = driver.findElement(By.id("age"));
-        assertEquals(AgeField.getText(),"");
+        assertTrue((AgeField.getText().equals(""))||(NameField.getText().equals("null")));
 
         WebElement LanguageField = driver.findElement(By.id("language"));
-        assertEquals(LanguageField.getText(),"");
+        assertTrue((LanguageField.getText().equals(""))||(NameField.getText().equals("null")));
 
         WebElement GenderField = driver.findElement(By.id("gender"));
-        assertEquals(GenderField.getText(),"null");
+        assertTrue((GenderField.getText().equals(""))||(NameField.getText().equals("null")));
 
         WebElement OptionField = driver.findElement(By.id("option"));
-        assertEquals(OptionField.getText(),"null");
+        assertTrue((OptionField.getText().equals(""))||(NameField.getText().equals("null")));
 
         WebElement CommentField = driver.findElement(By.id("comment"));
-        assertEquals(CommentField.getText(),"");
+        assertTrue((CommentField.getText().equals(""))||(NameField.getText().equals("null")));
 
         //Check button letters and background color
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).getCssValue("background-color"),"rgba(76, 175, 80, 1)");
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).getCssValue("text-decoration-color"),"rgb(255, 255, 255)");
+        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).getCssValue("background-color"), "rgba(76, 175, 80, 1)");
+        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).getCssValue("text-decoration-color"), "rgb(255, 255, 255)");
 
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[2]")).getCssValue("background-color"),"rgba(244, 67, 54, 1)");
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[2]")).getCssValue("text-decoration-color"),"rgb(255, 255, 255)");
+        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[2]")).getCssValue("background-color"), "rgba(244, 67, 54, 1)");
+        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[2]")).getCssValue("text-decoration-color"), "rgb(255, 255, 255)");
     }
 
     @Test
@@ -131,8 +133,8 @@ public class Task2 {
         WebElement CheckBox = driver.findElement(By.xpath("//*[@id=\"lang_check\"]/input[1]"));
         WebElement MaleRadio = driver.findElement(By.xpath("//div[4]//input[1]"));
         WebElement CommentField = driver.findElement(By.name("comment"));
-        String name  = "name";
-        String age  = "22";
+        String name = "name";
+        String age = "22";
         String comment = "comments";
 
         // Complete form
@@ -149,33 +151,30 @@ public class Task2 {
 
         //Check all fields is correctly completed
         WebElement NameField2 = driver.findElement(By.id("name"));
-        assertEquals(NameField2.getText(),"name");
+        assertEquals(NameField2.getText(), "name");
 
         WebElement AgeField2 = driver.findElement(By.id("age"));
-        assertEquals(AgeField2.getText(),"22");
+        assertEquals(AgeField2.getText(), "22");
 
         WebElement LanguageField2 = driver.findElement(By.id("language"));
-        assertEquals(LanguageField2.getText(),"English");
-        System.out.println(LanguageField2.getText());
+        assertEquals(LanguageField2.getText(), "English");
 
         WebElement GenderField2 = driver.findElement(By.id("gender"));
-        assertEquals(GenderField2.getText(),"male");
-        System.out.println(GenderField2.getText());
+        assertEquals(GenderField2.getText(), "male");
 
         WebElement OptionField2 = driver.findElement(By.id("option"));
-        assertEquals(OptionField2.getText(),"Why me?");
-        System.out.println(OptionField2.getText());
+        assertEquals(OptionField2.getText(), "Why me?");
 
         WebElement CommentField2 = driver.findElement(By.id("comment"));
-        assertEquals(CommentField2.getText(),"comments");
+        assertEquals(CommentField2.getText(), "comments");
 
 
         //Check button letters and background color
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).getCssValue("background-color"),"rgba(76, 175, 80, 1)");
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).getCssValue("text-decoration-color"),"rgb(255, 255, 255)");
+        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).getCssValue("background-color"), "rgba(76, 175, 80, 1)");
+        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).getCssValue("text-decoration-color"), "rgb(255, 255, 255)");
 
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[2]")).getCssValue("background-color"),"rgba(244, 67, 54, 1)");
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[2]")).getCssValue("text-decoration-color"),"rgb(255, 255, 255)");
+        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[2]")).getCssValue("background-color"), "rgba(244, 67, 54, 1)");
+        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[2]")).getCssValue("text-decoration-color"), "rgb(255, 255, 255)");
     }
 
     @Test
@@ -189,7 +188,7 @@ public class Task2 {
 
         //Enter name
         WebElement NameField = driver.findElement(By.id("fb_name"));
-        String name  = "name";
+        String name = "name";
         NameField.sendKeys(name);
 
         //Click on button send
@@ -199,7 +198,7 @@ public class Task2 {
         driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).click();
 
         WebElement Message = driver.findElement(By.id("message"));
-        assertEquals("Thank you, name, for your feedback!",Message.getText());
+        assertEquals("Thank you, name, for your feedback!", Message.getText());
     }
 
     @Test
@@ -217,9 +216,9 @@ public class Task2 {
         driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).click();
 
         WebElement Message = driver.findElement(By.id("message"));
-        assertEquals("Thank you for your feedback!",Message.getText());
-        assertEquals(Message.getCssValue("background-color"),"rgba(0, 0, 0, 0)");
-        assertEquals(Message.getCssValue("color"),"rgba(255, 255, 255, 1)");
+        assertEquals("Thank you for your feedback!", Message.getText());
+        assertEquals(Message.getCssValue("background-color"), "rgba(0, 0, 0, 0)");
+        assertEquals(Message.getCssValue("color"), "rgba(255, 255, 255, 1)");
 
     }
 
@@ -236,8 +235,8 @@ public class Task2 {
         WebElement CheckBox = driver.findElement(By.xpath("//*[@id=\"lang_check\"]/input[1]"));
         WebElement MaleRadio = driver.findElement(By.xpath("//div[4]//input[1]"));
         WebElement CommentField = driver.findElement(By.name("comment"));
-        String name  = "name";
-        String age  = "22";
+        String name = "name";
+        String age = "22";
         String comment = "comments";
 
         // Complete form
@@ -255,21 +254,19 @@ public class Task2 {
         //Click on button No
         driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[2]")).click();
 
-
-        System.out.println(driver.findElement(By.id("fb_name")).getText());
-       // System.out.println(AgeField.getText());
-      //  System.out.println(CommentField.getText());
-
-        /* assertEquals(NameField.getText(),"name");
-        assertEquals(AgeField.getText(),"22");
-
+        //Check radio and check box
         assertTrue(driver.findElement(By.xpath("//*[@id=\"lang_check\"]/input[1]")).isSelected());
-
         assertTrue(driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/div[4]/input[1]")).isSelected());
 
+        //Check name,age and comments field content
+        assertEquals(driver.findElement(By.id("fb_name")).getAttribute("value"), "name");
+        assertEquals(driver.findElement(By.id("fb_age")).getAttribute("value"), "22");
+        assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/div[6]/textarea")).getAttribute("value"), "comments");
 
-        WebElement CommentField2 = driver.findElement(By.id("comment"));
-        assertEquals(CommentField2.getText(),"comments"); */
+        //Check dropdown menu value
+        Select dropdown2 = new Select(driver.findElement(By.id("like_us")));
+        assertEquals("Why me?", dropdown2.getFirstSelectedOption().getAttribute("value"));
+
 
     }
 }
