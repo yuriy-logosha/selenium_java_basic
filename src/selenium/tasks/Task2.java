@@ -5,16 +5,24 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+import selenium.pages.GenericSamplePage;
+
+import java.util.concurrent.TimeUnit;
 
 public class Task2 {
     WebDriver driver;
+    static GenericSamplePage genericSP;
 
     @Before
     public void openPage() {
         String libWithDriversLocation = System.getProperty("user.dir") + "\\lib\\";
         System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
+       // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver = new ChromeDriver();
-        driver.get("https://kristinek.github.io/sitetasks/provide_feedback");
+        driver.get("https://kristinek.github.io/site/tasks/provide_feedback");
+        genericSP = PageFactory.initElements(driver, GenericSamplePage.class);
+
     }
 
     @After
@@ -25,12 +33,18 @@ public class Task2 {
     @Test
     public void initialFeedbackPage() throws Exception {
 //         TODO:
-//         check that all field are empty and no tick are clicked
-//         "Don't know" is selected in "Genre"
-//         "Choose your option" in "How do you like us?"
-//         check that the button send is blue with white letters
+//     --    check that all field are empty and no tick are clicked
+//     --   "Don't know" is selected in "Genre"
+//     --    "Choose your option" in "How do you like us?"
+//     --    check that the button send is blue with white letters
+
+        genericSP.isTextInputEmpty();
+        genericSP.isDunnoChecked();
+        genericSP.checkLikeOption();
+        genericSP.checkSendColor();
     }
 
+/*
     @Test
     public void emptyFeedbackPage() throws Exception {
 //         TODO:
@@ -76,4 +90,5 @@ public class Task2 {
 //         click "No"
 //         check fields are filled correctly
     }
+    */
 }

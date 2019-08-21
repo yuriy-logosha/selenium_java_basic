@@ -31,7 +31,7 @@ public class Sample9Task {
     public void closeBrowser() {
         driver.quit();
     }
-
+/*
     @Test
     public void loadGreenSleep() throws Exception {
 //         * 1) click on start loading green button
@@ -96,9 +96,10 @@ public class Sample9Task {
         assertFalse(startGreen.isDisplayed());
         assertFalse(loadingGreen.isDisplayed());
     }
-
+*/
     @Test
-    public void loadGreenAndBlueBonus() {
+    public void loadGreenAndBlueBonus() throws Exception
+    {
         /* TODO:
          * 0) wait until button to load green and blue appears
          * 1) click on start loading green and blue button
@@ -108,6 +109,52 @@ public class Sample9Task {
          * 		but loading text is seen instead for blue and success for green is seen
          * 5) check that both button and loading text is not seen, success is seen instead
          */
+
+        // 0  wait until button to load green and blue appears
+        WebDriverWait wait = (WebDriverWait) new WebDriverWait(driver, 2)
+                .ignoring(StaleElementReferenceException.class);
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#start_green_and_blue")));
+        Thread.sleep(3000);
+
+        // 1 click on start loading green and blue button
+        WebElement startGreenBlue = driver.findElement(By.cssSelector("#start_green_and_blue"));
+        startGreenBlue.click();
+        TimeUnit.MILLISECONDS.sleep(3000);
+
+        // 2 check that button does not appear, but loading text is seen instead for green
+        WebElement loadGreen = driver.findElement(By.cssSelector("#loading_green_without_blue"));
+        assertFalse(startGreenBlue.isDisplayed());
+        assertTrue(loadGreen.isDisplayed());
+        Thread.sleep(3000);
+
+        // 3 check that button does not appear, but loading text is seen instead for green and blue
+        WebElement loadGreenBlue = driver.findElement(By.cssSelector("#loading_green_with_blue"));
+        assertFalse(startGreenBlue.isDisplayed());
+        assertTrue(loadGreenBlue.isDisplayed());
+        Thread.sleep(3000);
+
+   /*
+        // fix condition!!
+        // 4 check that button and loading green does not appear,
+        //  but loading text is seen instead for blue and success for green is seen
+        WebElement loadBlue = driver.findElement(By.cssSelector("#loading_blue_without_green"));
+        WebElement greenSuccess = driver.findElement(By.cssSelector("label:contains('finished')"));
+        assertFalse(startGreenBlue.isDisplayed());
+        assertFalse(loadGreen.isDisplayed());
+        assertTrue(loadBlue.isDisplayed());
+        assertTrue(greenSuccess.isDisplayed());
+        Thread.sleep(3000);
+ */
+        // 5 check that both button and loading text is not seen, success is seen instead
+        WebElement greenBlueSuccess = driver.findElement(By.cssSelector("#finish_green_and_blue"));
+        WebElement loadBlue = driver.findElement(By.cssSelector("#loading_blue_without_green"));
+        assertFalse(startGreenBlue.isDisplayed());
+        assertFalse(loadGreen.isDisplayed());
+        assertFalse(loadBlue.isDisplayed());
+        assertTrue(greenBlueSuccess.isDisplayed());
+
+
+
     }
 
 }
