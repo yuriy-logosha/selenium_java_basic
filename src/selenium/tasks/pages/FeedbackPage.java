@@ -1,4 +1,4 @@
-package selenium.tasks;
+package selenium.tasks.pages;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class FeedbackPage {
 	@FindBy(how = How.CSS, using = "button[type='submit']")
 	private WebElement sendButton;
 	
-	FeedbackPage(WebDriver driver) {
+	public FeedbackPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -80,7 +80,7 @@ public class FeedbackPage {
     			return e.getAttribute("value");
     		}
     	}
-		return null;
+		return "";
 	}
 	
 	public void setOptionByText(String option) {
@@ -104,5 +104,9 @@ public class FeedbackPage {
 	
 	public void clickSend() {
 		sendButton.click();
+	}
+	
+	public String getButtonCssValue(String cssAttribute) {
+		return sendButton.getCssValue(cssAttribute);
 	}
 }

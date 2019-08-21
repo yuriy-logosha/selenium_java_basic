@@ -1,4 +1,4 @@
-package selenium.tasks;
+package selenium.tasks.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,7 +25,7 @@ public class FeedbackForm {
 	@FindBy(how = How.CSS, using = "button.w3-red")
 	private WebElement noButton;
 	
-	FeedbackForm(WebDriver driver) {
+	public FeedbackForm(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 	

@@ -46,30 +46,16 @@ public class Task2 {
 //         "Don't know" is selected in "Genre"
 //         "Choose your option" in "How do you like us?"
 //         check that the button send is blue with white letters
-    	WebElement nameField = driver.findElement(By.id("fb_name"));
-    	WebElement ageField = driver.findElement(By.id("fb_age"));
-    	List<WebElement> checkboxList = driver.findElements(By.cssSelector(".w3-check[type='checkbox']"));
-    	List<WebElement> genderList = driver.findElements(By.cssSelector(".w3-radio[type='radio']"));
-    	Select likeUs = new Select(driver.findElement(By.id("like_us")));
-    	WebElement commentArea = driver.findElement(By.cssSelector("textarea[name='comment']"));
-    	WebElement sendButton = driver.findElement(By.cssSelector("button[type='submit']"));
+    	FeedbackPage page = new FeedbackPage(driver);
     	
-    	assertEquals("", nameField.getText());
-    	assertEquals("", ageField.getText());
-    	for(WebElement e : checkboxList) {
-    		assertFalse(e.isSelected());
-    	}
-    	for(WebElement e : genderList) {
-    		if(!e.getAttribute("value").equals("")) {
-    			assertFalse(e.isSelected());
-    		} else {
-    			assertTrue(e.isSelected());
-    		}
-    	}
-    	assertEquals("Choose your option", likeUs.getFirstSelectedOption().getText());
-    	assertEquals("", commentArea.getText());
-    	assertEquals("rgba(33, 150, 243, 1)", sendButton.getCssValue("background-color"));
-    	assertEquals("rgba(255, 255, 255, 1)", sendButton.getCssValue("color"));
+    	assertEquals("", page.getName());
+    	assertEquals("", page.getAge());
+    	assertEquals(0, page.getSelectedLanguages().size());
+    	assertEquals("", page.getGenderValue());
+    	assertEquals("Choose your option", page.getOptionText());
+    	assertEquals("", page.getComment());
+    	assertEquals("rgba(33, 150, 243, 1)", page.getButtonCssValue("background-color"));
+    	assertEquals("rgba(255, 255, 255, 1)", page.getButtonCssValue("color"));
     }
 
     @Test
@@ -79,29 +65,23 @@ public class Task2 {
 //         check fields are empty or null
 //         check button colors
 //         (green with white letter and red with white letters)
-    	WebElement sendButton = driver.findElement(By.cssSelector("button[type='submit']"));
-    	sendButton.click();
+    	{
+    		FeedbackPage page = new FeedbackPage(driver);
+    		page.clickSend();
+    	}
+    	FeedbackForm page = new FeedbackForm(driver);
     	
-    	WebElement formName = driver.findElement(By.id("name"));
-    	WebElement formAge = driver.findElement(By.id("age"));
-    	WebElement formLanguage = driver.findElement(By.id("language"));
-    	WebElement formGender = driver.findElement(By.id("gender"));
-    	WebElement formOption = driver.findElement(By.id("option"));
-    	WebElement formComment = driver.findElement(By.id("comment"));
-    	WebElement yesButton = driver.findElement(By.cssSelector("button.w3-green"));
-    	WebElement noButton = driver.findElement(By.cssSelector("button.w3-red"));
+    	assertTrue((page.getName().equals("") || page.getName().equals("null")));
+    	assertTrue((page.getAge().equals("") || page.getAge().equals("null")));
+    	assertTrue((page.getLanguage().equals("") || page.getLanguage().equals("null")));
+    	assertTrue((page.getGender().equals("") || page.getGender().equals("null")));
+    	assertTrue((page.getOption().equals("") || page.getOption().equals("null")));
+    	assertTrue((page.getComment().equals("") || page.getComment().equals("null")));
     	
-    	assertTrue((formName.getText().equals("") || formName.getText().equals("null")));
-    	assertTrue((formAge.getText().equals("") || formAge.getText().equals("null")));
-    	assertTrue((formLanguage.getText().equals("") || formLanguage.getText().equals("null")));
-    	assertTrue((formGender.getText().equals("") || formGender.getText().equals("null")));
-    	assertTrue((formOption.getText().equals("") || formOption.getText().equals("null")));
-    	assertTrue((formComment.getText().equals("") || formComment.getText().equals("null")));
-    	
-    	assertEquals("rgba(76, 175, 80, 1)", yesButton.getCssValue("background-color"));
-    	assertEquals("rgba(255, 255, 255, 1)", yesButton.getCssValue("color"));
-    	assertEquals("rgba(244, 67, 54, 1)", noButton.getCssValue("background-color"));
-    	assertEquals("rgba(255, 255, 255, 1)", noButton.getCssValue("color"));
+    	assertEquals("rgba(76, 175, 80, 1)", page.getButtonCssProperty(ButtonType.YES, "background-color"));
+    	assertEquals("rgba(255, 255, 255, 1)", page.getButtonCssProperty(ButtonType.YES, "color"));
+    	assertEquals("rgba(244, 67, 54, 1)", page.getButtonCssProperty(ButtonType.NO, "background-color"));
+    	assertEquals("rgba(255, 255, 255, 1)", page.getButtonCssProperty(ButtonType.NO, "color"));
     }
 
     @Test
