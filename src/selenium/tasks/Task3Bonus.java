@@ -7,9 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import selenium.pages.AgeSamplePage;
+import static org.junit.Assert.fail;
 
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class Task3Bonus {
     static WebDriver driver;
@@ -33,10 +37,10 @@ public class Task3Bonus {
         driver.get("https://kristinek.github.io/site/tasks/list_of_people");
     }
 
-   /* @After
+    @After
     public void closeBrowser() {
         driver.quit();
-    }*/
+    }
 
     @Test
     public void addPerson() {
@@ -48,6 +52,11 @@ public class Task3Bonus {
          * check the list again, that non of the people where changes, but an additional one with correct name/job was added
          */
 
+        //listPage.getPersonList();
+
+        List<Person> currentPersons = listPage.getPersonList();
+
+        listPage.printList();
         listPage.clickAddPerson1();
         formPage.enterName("Name");
         formPage.enterSurname("Surname");
@@ -59,6 +68,35 @@ public class Task3Bonus {
         formPage.clickSpanishCheckBox();
         formPage.selectStatusContractor();
         formPage.clickAddButton();
+
+        List<Person> newPersons = listPage.getPersonList();
+        assertEquals(currentPersons.size()+1, newPersons.size());
+
+        int samePersons = 0;
+        int notSamePersons = 0;
+
+        for(Person p : newPersons) {
+            boolean matchFound = false;
+            for(Person c : currentPersons) {
+                if(c.equals(p)) {
+                    matchFound = true;
+                    break;
+                }
+            }
+            if(matchFound) {
+                samePersons++;
+            } else {
+                notSamePersons++;
+                if(notSamePersons > 1) {
+                    fail("Only 1 persons information expected to be new");
+                }
+              //  assertEquals("Name", p.getName());
+             //   assertEquals("Surname", p.getSurname());
+            //    assertEquals("JobTitle", p.getJob());
+            }
+        }
+
+        assertEquals(currentPersons.size(), samePersons);
 
     }
 
@@ -105,4 +143,6 @@ public class Task3Bonus {
          * delete all people and check that there is no no table on page, but the button Add is still present and working
          */
     }
+
+
 }
