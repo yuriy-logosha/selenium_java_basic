@@ -156,7 +156,7 @@ public class Task2 {
         send.click();
         WebElement yesBtn = driver.findElement(By.xpath("//button[@class='w3-btn w3-green w3-xlarge']"));
         yesBtn.click();
-        Thread.sleep(1000);
+
         WebElement thanksMsg = driver.findElement(By.id("message"));
         assertEquals(thanksMsg.getText(), "Thank you, Mihails, for your feedback!");
 
@@ -172,6 +172,15 @@ public class Task2 {
 //         click "Yes"
 //         check message text: "Thank you for your feedback!"
 //         color of text is white with green on the background
+        WebElement send = driver.findElement(By.xpath("//button[@class='w3-btn-block w3-blue w3-section']"));
+        send.click();
+        WebElement yesBtn = driver.findElement(By.xpath("//button[@class='w3-btn w3-green w3-xlarge']"));
+        yesBtn.click();
+        WebElement thanksMsg = driver.findElement(By.id("message"));
+        assertEquals(thanksMsg.getText(), "Thank you for your feedback!");
+        assertEquals("rgba(255, 255, 255, 1)", thanksMsg.getCssValue("color"));
+        assertEquals("rgba(0, 0, 0, 0)", thanksMsg.getCssValue("background-color"));
+
     }
 
     @Test
@@ -181,5 +190,33 @@ public class Task2 {
 //         click "Send"
 //         click "No"
 //         check fields are filled correctly
+        WebElement nameBox = driver.findElement(By.id("fb_name"));
+        nameBox.sendKeys("Mihails");
+        WebElement ageBox = driver.findElement(By.id("fb_age"));
+        ageBox.sendKeys("31");
+        WebElement option1 = driver.findElement(By.cssSelector(".w3-check[value='English'][type='checkbox']"));
+        option1.click();
+        WebElement maleRadio = driver.findElement(By.cssSelector(".w3-radio[value='male'][type='radio'"));
+        maleRadio.click();
+        Select oSelect = new Select(driver.findElement(By.id("like_us")));
+        oSelect.selectByValue("Why me?");
+        WebElement textArea = driver.findElement(By.xpath("//textarea[@name='comment']"));
+        textArea.sendKeys("kek");
+        WebElement send = driver.findElement(By.xpath("//button[@class='w3-btn-block w3-blue w3-section']"));
+        send.click();
+        WebElement noBtn = driver.findElement(By.xpath("//button[@class='w3-btn w3-red w3-xlarge']"));
+        noBtn.click();
+        WebElement yourName = driver.findElement(By.id("fb_name"));
+        assertEquals("Mihails", yourName.getAttribute("value"));
+        WebElement yourAge= driver.findElement(By.id("fb_age"));
+        assertEquals("31", yourAge.getAttribute("value"));
+        WebElement option1after = driver.findElement(By.xpath("//div[@id='lang_check']//input[1]"));
+        assertTrue(option1after.isSelected());
+        WebElement option2after = driver.findElement(By.xpath("//div[4]//input[1]"));
+        assertTrue(option2after.isSelected());
+        Select oSelectAfter = new Select(driver.findElement(By.xpath("//select[@id='like_us']")));
+        assertEquals("Why me?", oSelectAfter.getFirstSelectedOption().getText());
+        WebElement textAreaAfter = driver.findElement(By.xpath("//textarea[@name='comment']"));
+        assertEquals("kek", textAreaAfter.getAttribute("value"));
     }
 }
