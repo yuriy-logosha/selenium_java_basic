@@ -65,5 +65,18 @@ public class Person {
         this.status = status;
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Person) {
+            Person persObj = (Person) obj;
+            return (this.getName().equals(persObj.getName()) &&
+                    this.getSurname().equals(persObj.getSurname()) &&
+                    this.getJob().equals(persObj.getJob()) &&
+                    this.getDob().equals(persObj.getDob()) &&
+                    this.getGender().equals(persObj.getGender()) &&
+                    this.getStatus().equals(persObj.getStatus()) &&
+                    this.getLanguages().equals(persObj.getLanguages()) );
+        }
+        return super.equals(obj);
+    }
 }

@@ -16,6 +16,10 @@ import java.util.List;
 public class ListPage {
     @FindBy(how = How.CLASS_NAME, using = "w3-padding-16") //
             List<WebElement> persons; //
+    @FindBy(how = How.XPATH, using = "//div[4]//button[1]")
+    WebElement addBtn;
+    @FindBy(how = How.XPATH, using = "//li[@id='person2']//span[@class='w3-closebtn editbtn w3-padding w3-margin-right w3-medium']")
+    WebElement editBtn;
 
 
     public List<Person> getPersons() {
@@ -39,6 +43,15 @@ public class ListPage {
 
         return personList;
 
+
+    }
+    public void clickAddPerson() {
+        addBtn.click();
+
+
+    }
+    public void clickEdit() {
+        editBtn.click();
 
     }
 }

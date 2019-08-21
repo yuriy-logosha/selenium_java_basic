@@ -45,8 +45,8 @@ public class FormPage {
         surnameInput.sendKeys(surname);
     }
     public void enterJob(String job) {
-        dobInput.clear();
-        dobInput.sendKeys(job);
+        jobInput.clear();
+        jobInput.sendKeys(job);
     }
     public void enterDob(String dob) {
         dobInput.clear();
