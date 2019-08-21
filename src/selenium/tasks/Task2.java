@@ -12,12 +12,12 @@ import selenium.pages.FeedbackSubmittedPage;
 import java.util.concurrent.TimeUnit;
 
 public class Task2 {
-    private WebDriver driver;
-    private static FeedbackSamplePage feedbackSample;
-    private static FeedbackSubmittedPage FeedbackSubmitted;
+private WebDriver driver;
+private static FeedbackSamplePage feedbackSample;
+private static FeedbackSubmittedPage FeedbackSubmitted;
 
-    @Before
-    public void openPage() {
+@Before
+public void openPage() {
         String libWithDriversLocation = System.getProperty("user.dir") + "\\lib\\";
         System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
         driver = new ChromeDriver();
@@ -26,15 +26,15 @@ public class Task2 {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         feedbackSample = PageFactory.initElements(driver, FeedbackSamplePage.class);
         FeedbackSubmitted = PageFactory.initElements(driver, FeedbackSubmittedPage.class);
-    }
+        }
 
-    @After
-    public void closeBrowser() {
+@After
+public void closeBrowser() {
         driver.quit();
-    }
+        }
 
-    @Test
-    public void initialFeedbackPage() {
+@Test
+public void initialFeedbackPage() {
 //         TODO:
 //         check that all field are empty and no tick are clicked
 //         "Don't know" is selected in "Genre"
@@ -42,10 +42,10 @@ public class Task2 {
         feedbackSample.noDataEntered();
 //         check that the button send is blue with white letters
         feedbackSample.checkButtonSendColors();
-    }
+        }
 
-    @Test
-    public void emptyFeedbackPage() {
+@Test
+public void emptyFeedbackPage() {
 //         TODO:
 //         click "Send" without entering any data
         feedbackSample.clickSendButton();
@@ -54,10 +54,10 @@ public class Task2 {
 //         check button colors
 //         (green with white letter and red with white letters)
         FeedbackSubmitted.checkButtonColors();
-    }
+        }
 
-    @Test
-    public void notEmptyFeedbackPage() throws Exception {
+@Test
+public void notEmptyFeedbackPage() throws Exception {
         String name = "Fidan";
         String age = "22";
         String comment = "This page is useless";
@@ -71,10 +71,10 @@ public class Task2 {
 //         check button colors
 //         (green with white letter and red with white letters)
         FeedbackSubmitted.checkButtonColors();
-    }
+        }
 
-    @Test
-    public void yesOnFeedbackPageWithName() {
+@Test
+public void yesOnFeedbackPageWithName() {
         String name = "Anar";
 //         TODO:
 //         enter only name
@@ -87,10 +87,10 @@ public class Task2 {
         FeedbackSubmitted.checkFinalMessageWithName(name);
 //         color of text is white with green on the background
         FeedbackSubmitted.checkFinalMessageColors();
-    }
+        }
 
-    @Test
-    public void yesOnFeedbackPageWithoutName() {
+@Test
+public void yesOnFeedbackPageWithoutName() {
 //         TODO:
 //         click "Send" (without entering anything
         feedbackSample.clickSendButton();
@@ -100,10 +100,10 @@ public class Task2 {
         FeedbackSubmitted.checkFinalMessageWithoutName();
 //         color of text is white with green on the background
         FeedbackSubmitted.checkFinalMessageColors();
-    }
+        }
 
-    @Test
-    public void noOnFeedbackPage() throws Exception {
+@Test
+public void noOnFeedbackPage() throws Exception {
 //         TODO:
 //         fill the whole form
         String name = "Anar";
@@ -117,5 +117,5 @@ public class Task2 {
         FeedbackSubmitted.clickNo();
 //         check fields are filled correctly
         feedbackSample.checkFieldsFilledCorrectly(name, age, comment);
-    }
-}
+        }
+        }
