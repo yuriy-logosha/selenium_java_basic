@@ -69,10 +69,26 @@ public class Task2 {
 //         check fields are empty or null
 //         check button colors
 //         (green with white letter and red with white letters)
+        //Clicking Send
         driver.findElement(By.xpath("//button")).click();
-        List<WebElement> span = new ArrayList<>(driver.findElements(By.xpath("//span")));
-        System.out.println(span.size());
 
+        //The values are contained in Span elements
+        List<WebElement> spans = new ArrayList<>(driver.findElements(By.xpath("//*[contains(@class, 'description')]//span")));
+        for (WebElement we : spans) {
+            assertTrue(we.getText().equals("") || we.getText().equals("null"));
+        }
+
+        //The buttons are under the same div
+        List<WebElement> buttons = new ArrayList(driver.findElements(By.xpath("//*[contains(@class, 'w3-btn-group')]//button")));
+        for (WebElement we : buttons) {
+            if (we.getText().equals("Yes")) {
+                assertTrue("rgba(76, 175, 80, 1)".equals(we.getCssValue("background-color")));
+                assertTrue("rgba(255, 255, 255, 1)".equals(we.getCssValue("color")));
+            } else if (we.getText().equals("No")) {
+                assertTrue("rgba(244, 67, 54, 1)".equals(we.getCssValue("background-color")));
+                assertTrue("rgba(255, 255, 255, 1)".equals(we.getCssValue("color")));
+            }
+        }
 
     }
 
@@ -83,6 +99,18 @@ public class Task2 {
 //         check fields are filled correctly
 //         check button colors
 //         (green with white letter and red with white letters)
+        //Setting up values
+        String name = "TempName";
+        String age = "33";
+        String language = "French"; //English/French/Spanish/Chinese
+
+        driver.findElement(By.xpath("//*[@id='fb_name']")).sendKeys(name);
+        driver.findElement(By.xpath("//*[@id='fb_age']")).sendKeys(age);
+        driver.findElement(By.xpath("//*[contains(text(), '" + language + "')]")).click();
+        driver.findElement(By.xpath("//*[contains(@class, 'w3-radio')][1]")).click();
+        new Select(driver.findElement(By.xpath("//*[@id='like_us']"))).selectByVisibleText("Good");
+
+        Thread.sleep(3000);
     }
 
     @Test

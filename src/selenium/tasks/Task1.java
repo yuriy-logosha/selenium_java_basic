@@ -77,8 +77,10 @@ public class Task1 {
         driver.findElement(By.tagName("button")).click();
         Alert alert = driver.switchTo().alert();
         //Thread.sleep(1000);
-        String[] sentenceToWords = alert.getText().split("\\s");
-        assertTrue(sentenceToWords[sentenceToWords.length - 1].contains("8"));
+        //Alert returns a sentence withe the result being the last element.
+        //Splitting the sentence into words and checking only the last element.
+        String[] toWords = alert.getText().split("\\s");
+        assertTrue(toWords[toWords.length - 1].contains("8"));
         alert.accept();
         assertFalse(driver.findElement(By.id("ch1_error")).isDisplayed());
     }
@@ -93,6 +95,8 @@ public class Task1 {
         //Thread.sleep(1000);
         Alert alert = driver.switchTo().alert();
         //Thread.sleep(1000);
+        //Alert returns a sentence withe the result being the last element.
+        //Splitting the sentence into words and checking only the last element.
         String[] toWords = alert.getText().split("\\s");
         assertTrue(toWords[toWords.length - 1].contains("8.12"));
         alert.accept();
