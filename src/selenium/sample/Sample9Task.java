@@ -98,16 +98,32 @@ public class Sample9Task {
     }
 
     @Test
-    public void loadGreenAndBlueBonus() {
-        /* TODO:
-         * 0) wait until button to load green and blue appears
-         * 1) click on start loading green and blue button
-         * 2) check that button does not appear, but loading text is seen instead for green
-         * 3) check that button does not appear, but loading text is seen instead for green and blue
-         * 4) check that button and loading green does not appear,
-         * 		but loading text is seen instead for blue and success for green is seen
-         * 5) check that both button and loading text is not seen, success is seen instead
-         */
+    public void loadGreenAndBlueBonus() throws InterruptedException {
+
+//         * 0) wait until button to load green and blue appears
+         WebElement loadingGreenAndBlue = driver.findElement(By.id("start_green_and_blue"));
+         TimeUnit.MILLISECONDS.sleep(500);
+
+        assertTrue(loadingGreenAndBlue.isDisplayed());
+
+//         * 1) click on start loading green and blue button
+        WebElement startGreenAndBlue = driver.findElement(By.id("start_green_and_blue"));
+        TimeUnit.MILLISECONDS.sleep(500);
+
+//        assertTrue(startGreenAndBlue.isDisplayed());
+
+//         * 2) check that button does not appear, but loading text is seen instead for green
+        WebElement startGreen = driver.findElement(By.id("loading_green_without_blue"));
+        assertFalse(startGreen.isDisplayed());
+//
+        WebElement loadingGreen = driver.findElement(By.id("loading_green_without_blue"));
+        assertTrue(loadingGreen.isDisplayed());
+
+//         * 3) check that button does not appear, but loading text is seen instead for green and blue
+//         * 4) check that button and loading green does not appear,
+//         * 		but loading text is seen instead for blue and success for green is seen
+//         * 5) check that both button and loading text is not seen, success is seen instead
+
     }
 
 }

@@ -115,7 +115,7 @@ public class Task1 {
         alert.accept();
         assertEquals("", driver.findElement(By.id("ch1_error")).getText());
 
-//        System.out.println(driver.alert.getText));
+//        System.out.println(driver.alert.getText));;
         sleep(1000);
 
 
