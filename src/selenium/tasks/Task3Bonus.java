@@ -11,45 +11,55 @@ import selenium.pages.AgeSamplePage;
 
 import java.util.List;
 
-//import pages.FormPage;
-//import pages.ListPage;
-
 public class Task3Bonus {
-
-//	ListPage listPage = PageFactory.initElements(driver, ListPage.class);
-//     should contain what you see when you just open the page (the table with names/jobs)
+    static WebDriver driver;
     ListPage listPage = PageFactory.initElements(driver, ListPage.class);
-//	FormPage formPage = PageFactory.initElements(driver, FormPage.class);
+//     should contain what you see when you just open the page (the table with names/jobs)
+
+    FormPage formPage = PageFactory.initElements(driver, FormPage.class);
 //     should be what you see if you click "Add" or "Edit" (2 input field and a button (Add/Edit) and (Cancel)
 
 //    Bonus:
 //    try storing people via an Object/separate class
 
-    static WebDriver driver;
-    static AgeSamplePage agePage;
 
     @Before
     public void openPage() {
         String libWithDriversLocation = System.getProperty("user.dir") + "\\lib\\";
         System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
         driver = new ChromeDriver();
+        formPage = PageFactory.initElements(driver, FormPage.class);
+        listPage = PageFactory.initElements(driver, ListPage.class);
         driver.get("https://kristinek.github.io/site/tasks/list_of_people");
     }
 
-    @After
+   /* @After
     public void closeBrowser() {
         driver.quit();
-    }
+    }*/
 
     @Test
     public void addPerson() {
         /* TODO:
-         * implement adding new person using page object
+         * implement adding new person using page object +
          *
          * in order: store the list of people and jobs currently on page
          * add a person via "Add person button"
          * check the list again, that non of the people where changes, but an additional one with correct name/job was added
          */
+
+        listPage.clickAddPerson1();
+        formPage.enterName("Name");
+        formPage.enterSurname("Surname");
+        formPage.enterJob("JobTitle");
+        formPage.enterDob("08/21/2019");
+        formPage.selectFemaleRadioButton();
+        formPage.clickEnglishCheckBox();
+        formPage.clickFrenchCheckBox();
+        formPage.clickSpanishCheckBox();
+        formPage.selectStatusContractor();
+        formPage.clickAddButton();
+
     }
 
     @Test
