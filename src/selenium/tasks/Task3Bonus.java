@@ -5,26 +5,35 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+import selenium.pages.AgeSamplePage;
+
+
+import java.util.List;
 
 //import pages.FormPage;
 //import pages.ListPage;
 
 public class Task3Bonus {
-    WebDriver driver;
+
 //	ListPage listPage = PageFactory.initElements(driver, ListPage.class);
 //     should contain what you see when you just open the page (the table with names/jobs)
+    ListPage listPage = PageFactory.initElements(driver, ListPage.class);
 //	FormPage formPage = PageFactory.initElements(driver, FormPage.class);
 //     should be what you see if you click "Add" or "Edit" (2 input field and a button (Add/Edit) and (Cancel)
 
 //    Bonus:
 //    try storing people via an Object/separate class
 
+    static WebDriver driver;
+    static AgeSamplePage agePage;
+
     @Before
     public void openPage() {
         String libWithDriversLocation = System.getProperty("user.dir") + "\\lib\\";
         System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
         driver = new ChromeDriver();
-        driver.get("https://kristinek.github.io/sitetasks/list_of_people");
+        driver.get("https://kristinek.github.io/site/tasks/list_of_people");
     }
 
     @After

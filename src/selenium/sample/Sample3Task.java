@@ -40,7 +40,7 @@ public class Sample3Task {
         assertEquals(5, driver.findElements(By.className("test")).size());
 //         check that value of second button is "This is also a button"
         assertEquals("This is also a button", driver.findElement(By.id("buttonId")).getAttribute("value"));
-    }
+          }
 
     @Test
     public void assertTrueTask() throws Exception {

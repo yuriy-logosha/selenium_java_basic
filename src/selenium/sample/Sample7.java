@@ -33,10 +33,10 @@ public class Sample7 {
     }
 
     // method which is being run after each test
-    @After
+  /*  @After
     public void endingTests() throws Exception {
         driver.quit();
-    }
+    }   */
 
     @Test
     public void selectCheckBox() throws Exception {

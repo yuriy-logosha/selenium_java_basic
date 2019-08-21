@@ -99,6 +99,7 @@ public class Sample4 {
         WebElement textInput = driver.findElement(By.id("text"));
         String originalText = "This is a text box";
         String sendKeyOne = " bla-bla";
+        Thread.sleep(2000);
 
         assertEquals(textInput.getText(), ""); // checking that getText is empty
         assertEquals(textInput.getAttribute("value"), originalText); // checking that value is "This is a text box"

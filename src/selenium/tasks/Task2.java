@@ -1,5 +1,6 @@
 package selenium.tasks;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -97,21 +98,21 @@ public class Task2 {
         WebElement NameField = driver.findElement(By.id("name"));
         assertTrue((NameField.getText().equals(""))||(NameField.getText().equals("null")));
 
-
         WebElement AgeField = driver.findElement(By.id("age"));
-        assertTrue((AgeField.getText().equals(""))||(NameField.getText().equals("null")));
+        assertTrue((AgeField.getText().equals(""))||(AgeField.getText().equals("null")));
 
         WebElement LanguageField = driver.findElement(By.id("language"));
-        assertTrue((LanguageField.getText().equals(""))||(NameField.getText().equals("null")));
+        assertTrue((LanguageField.getText().equals(""))||(LanguageField.getText().equals("null")));
+
 
         WebElement GenderField = driver.findElement(By.id("gender"));
-        assertTrue((GenderField.getText().equals(""))||(NameField.getText().equals("null")));
+        assertTrue((GenderField.getText().equals(""))||(GenderField.getText().equals("null")));
 
         WebElement OptionField = driver.findElement(By.id("option"));
-        assertTrue((OptionField.getText().equals(""))||(NameField.getText().equals("null")));
+        assertTrue((OptionField.getText().equals(""))||(OptionField.getText().equals("null")));
 
         WebElement CommentField = driver.findElement(By.id("comment"));
-        assertTrue((CommentField.getText().equals(""))||(NameField.getText().equals("null")));
+        assertTrue((CommentField.getText().equals(""))||(CommentField.getText().equals("null")));
 
         //Check button letters and background color
         assertEquals(driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).getCssValue("background-color"), "rgba(76, 175, 80, 1)");
