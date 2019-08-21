@@ -108,6 +108,12 @@ public class Sample9Task {
          * 		but loading text is seen instead for blue and success for green is seen
          * 5) check that both button and loading text is not seen, success is seen instead
          */
+        WebElement startGreenAndBlue = driver.findElement(By.id("start_green_and_blue"));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        startGreenAndBlue.click();
+
+
     }
 
 }

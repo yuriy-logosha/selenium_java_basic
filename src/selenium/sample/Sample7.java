@@ -102,6 +102,7 @@ public class Sample7 {
         String dragElement = "#black_box";
         String toTarget = "#drag_box2";
         Sample7DragAndDropMagic.dragAndDropMagic(driver, dragElement, toTarget);
+
     }
 
     @Test
