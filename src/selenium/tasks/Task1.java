@@ -34,18 +34,18 @@ public class Task1 {
     public void errorOnText() throws Exception {
 //        TODO
 //        enter a text instead of a number, check that correct error is seen
-
-        WebElement textArea = driver.findElement(By.id("numb"));  ///find text area 1
-
-        String newTextOne = "text"; //enter text "text" in area 1
-
-        textArea.sendKeys(newTextOne); // sending keys "text"
-
-        driver.findElement(By.className("w3-btn")).click(); //click on submit button
-
-        assertEquals("Please enter a number", driver.findElement(By.id("ch1_error")).getText());
-
-        //assert actual end expected error messages are same
+        //
+        //        WebElement textArea = driver.findElement(By.id("numb"));  ///find text area 1
+        //
+        //        String newTextOne = "text"; //enter text "text" in area 1
+        //
+        //        textArea.sendKeys(newTextOne); // sending keys "text"
+        //
+        //        driver.findElement(By.className("w3-btn")).click(); //click on submit button
+        //
+        //        assertEquals("Please enter a number", driver.findElement(By.id("ch1_error")).getText());
+        //
+        //        //assert actual end expected error messages are same
 
     }
 

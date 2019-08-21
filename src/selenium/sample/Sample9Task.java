@@ -98,16 +98,20 @@ public class Sample9Task {
     }
 
     @Test
-    public void loadGreenAndBlueBonus() {
-        /* TODO:
-         * 0) wait until button to load green and blue appears
-         * 1) click on start loading green and blue button
-         * 2) check that button does not appear, but loading text is seen instead for green
-         * 3) check that button does not appear, but loading text is seen instead for green and blue
-         * 4) check that button and loading green does not appear,
-         * 		but loading text is seen instead for blue and success for green is seen
-         * 5) check that both button and loading text is not seen, success is seen instead
-         */
-    }
+    public void loadGreenAndBlueBonus() throws Exception {
 
-}
+        WebElement startGreenAndBlue = driver.findElement(By.id("#start_green_and_blue"));
+        startGreenAndBlue.click();
+        TimeUnit.MILLISECONDS.sleep(500);
+//         * 2) check that button does not appear,
+        assertFalse(startGreenAndBlue.isDisplayed());
+//         * but loading text is seen instead   "Loading green..."
+
+        WebElement loadingGreen = driver.findElement(By.id("#loading_green_without_blue"));
+        WebElement loadingBlue = driver.findElement(By.id("#loading_blue_without_green"));
+        assertTrue(loadingGreen.isDisplayed()); //check that loading text is seen,
+        assertTrue(loadingBlue.isDisplayed()); //check that loading text is seen
+
+    }}
+
+
