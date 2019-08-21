@@ -89,7 +89,6 @@ public class Task2 {
                 assertTrue("rgba(255, 255, 255, 1)".equals(we.getCssValue("color")));
             }
         }
-
     }
 
     @Test
@@ -99,18 +98,63 @@ public class Task2 {
 //         check fields are filled correctly
 //         check button colors
 //         (green with white letter and red with white letters)
+
         //Setting up values
         String name = "TempName";
         String age = "33";
         String language = "French"; //English/French/Spanish/Chinese
+        String gender = "male"; //male/female
+        String likeUsDropdown = "Good"; //Good/Ok, i guess/Bad/Why me?
+        String comment = "temporary comment";
 
+        //Filling the for with data
         driver.findElement(By.xpath("//*[@id='fb_name']")).sendKeys(name);
         driver.findElement(By.xpath("//*[@id='fb_age']")).sendKeys(age);
-        driver.findElement(By.xpath("//*[contains(text(), '" + language + "')]")).click();
-        driver.findElement(By.xpath("//*[contains(@class, 'w3-radio')][1]")).click();
-        new Select(driver.findElement(By.xpath("//*[@id='like_us']"))).selectByVisibleText("Good");
+        driver.findElement(By.xpath("//input[@type='checkbox' and @value='" + language + "']")).click();
+        driver.findElement(By.xpath("//input[@type='radio' and @value='" + gender + "']")).click();
+        Select sel = new Select(driver.findElement(By.xpath("//*[@id='like_us']")));
+        sel.selectByVisibleText(likeUsDropdown);
+        driver.findElement(By.xpath("//*[contains(@name, 'comment')]")).sendKeys(comment);
 
-        Thread.sleep(3000);
+        //Clicking Send
+        driver.findElement(By.xpath("//button[contains(@class, 'w3-btn-block')]")).click();
+
+        //Comparing the span elements with the previously filled values
+        List<WebElement> spans = new ArrayList<>(driver.findElements(By.xpath("//*[contains(@class, 'description')]//span")));
+        for (int i = 0; i < spans.size(); i++) {
+            switch (i) {
+                case 0:
+                    assertTrue(spans.get(i).getText().equals(name));
+                    break;
+                case 1:
+                    assertTrue(spans.get(i).getText().equals(age));
+                    break;
+                case 2:
+                    assertTrue(spans.get(i).getText().equals(language));
+                    break;
+                case 3:
+                    assertTrue(spans.get(i).getText().equals(gender));
+                    break;
+                case 4:
+                    assertTrue(spans.get(i).getText().equals(likeUsDropdown));
+                    break;
+                case 5:
+                    assertTrue(spans.get(i).getText().equals(comment));
+                    break;
+            }
+        }
+
+        //Checking button colors
+        List<WebElement> buttons = new ArrayList(driver.findElements(By.xpath("//*[contains(@class, 'w3-btn-group')]//button")));
+        for (WebElement we : buttons) {
+            if (we.getText().equals("Yes")) {
+                assertTrue("rgba(76, 175, 80, 1)".equals(we.getCssValue("background-color")));
+                assertTrue("rgba(255, 255, 255, 1)".equals(we.getCssValue("color")));
+            } else if (we.getText().equals("No")) {
+                assertTrue("rgba(244, 67, 54, 1)".equals(we.getCssValue("background-color")));
+                assertTrue("rgba(255, 255, 255, 1)".equals(we.getCssValue("color")));
+            }
+        }
     }
 
     @Test
@@ -121,6 +165,21 @@ public class Task2 {
 //         click "Yes"
 //         check message text: "Thank you, NAME, for your feedback!"
 //         color of text is white with green on the background
+        //Filling the name
+        String name = "TempName";
+        driver.findElement(By.xpath("//*[@id='fb_name']")).sendKeys(name);
+
+        //Navigating through the pages
+        driver.findElement(By.xpath("//button[contains(@class, 'w3-btn-block')]")).click();
+        driver.findElement(By.xpath("//*[contains(@class, 'w3-btn-group')]//button[contains(text(), 'Yes')]")).click();
+
+        //Message text
+        assertEquals("Thank you, " + name + ", for your feedback!", driver.findElement(By.xpath("//*[@id='message']")).getText());
+
+        //Colors
+        assertTrue("rgba(255, 255, 255, 1)".equals(driver.findElement(By.xpath("//*[@id='message']")).getCssValue("color")));
+        //The background color is taken from the div element
+        assertTrue("rgba(76, 175, 80, 1)".equals(driver.findElement(By.xpath("//*[contains(@class, 'w3-panel')]")).getCssValue("background-color")));
     }
 
     @Test
@@ -130,6 +189,17 @@ public class Task2 {
 //         click "Yes"
 //         check message text: "Thank you for your feedback!"
 //         color of text is white with green on the background
+        //Navigating through the pages
+        driver.findElement(By.xpath("//button[contains(@class, 'w3-btn-block')]")).click();
+        driver.findElement(By.xpath("//*[contains(@class, 'w3-btn-group')]//button[contains(text(), 'Yes')]")).click();
+
+        //Message text
+        assertEquals("Thank you for your feedback!", driver.findElement(By.xpath("//*[@id='message']")).getText());
+
+        //Colors
+        assertTrue("rgba(255, 255, 255, 1)".equals(driver.findElement(By.xpath("//*[@id='message']")).getCssValue("color")));
+        //The background color is taken from the div element
+        assertTrue("rgba(76, 175, 80, 1)".equals(driver.findElement(By.xpath("//*[contains(@class, 'w3-panel')]")).getCssValue("background-color")));
     }
 
     @Test
@@ -139,5 +209,41 @@ public class Task2 {
 //         click "Send"
 //         click "No"
 //         check fields are filled correctly
+
+        //Setting up values
+        String name = "TempName";
+        String age = "33";
+        String language = "French"; //English/French/Spanish/Chinese
+        String gender = "male"; //male/female
+        String likeUsDropdown = "Good"; //Good/Ok, i guess/Bad/Why me?
+        String comment = "temporary comment";
+
+        //Filling the for with data
+        driver.findElement(By.xpath("//*[@id='fb_name']")).sendKeys(name);
+        driver.findElement(By.xpath("//*[@id='fb_age']")).sendKeys(age);
+        driver.findElement(By.xpath("//input[@type='checkbox' and @value='" + language + "']")).click();
+        driver.findElement(By.xpath("//input[@type='radio' and @value='" + gender + "']")).click();
+        Select sel = new Select(driver.findElement(By.xpath("//*[@id='like_us']")));
+        sel.selectByVisibleText(likeUsDropdown);
+        driver.findElement(By.xpath("//*[contains(@name, 'comment')]")).sendKeys(comment);
+
+        //Clicking Send
+        driver.findElement(By.xpath("//button[contains(@class, 'w3-btn-block')]")).click();
+
+        //Clicking No
+        driver.findElement(By.xpath("//*[contains(@class, 'w3-btn-group')]//button[contains(text(), 'No')]")).click();
+
+        //Checking values
+        assertEquals(name, driver.findElement(By.xpath("//*[@id='fb_name']")).getAttribute("value"));
+        assertEquals(age, driver.findElement(By.xpath("//*[@id='fb_age']")).getAttribute("value"));
+        assertTrue(driver.findElement(By.xpath("//input[@type='checkbox' and @value='" + language + "']")).isSelected());
+        assertTrue(driver.findElement(By.xpath("//input[@type='radio' and @value='" + gender + "']")).isSelected());
+
+        Select selTest = new Select(driver.findElement(By.xpath("//*[@id='like_us']")));
+        List<WebElement> sList = selTest.getAllSelectedOptions();
+        assertEquals(1, sList.size());
+        assertEquals(likeUsDropdown, sList.get(sList.size() - 1).getText());
+
+        assertEquals(comment, driver.findElement(By.xpath("//*[contains(@name, 'comment')]")).getAttribute("value"));
     }
 }
