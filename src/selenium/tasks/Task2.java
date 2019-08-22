@@ -180,7 +180,7 @@ public class Task2 {
 //         TODO:
 //         fill the whole form
 //         click "Send"
-        driver.findElement(By.id("fb_name")).sendKeys("Marusja");
+        driver.findElement(By.xpath("//*[@id=\"fb_name\"]")).sendKeys("Marusja");
         driver.findElement(By.id("fb_age")).sendKeys("26");
         List<WebElement> checkBox = driver.findElements(By.className("w3-check"));
         checkBox.get(2).click();
@@ -196,19 +196,10 @@ public class Task2 {
 
 //         check fields are filled correctly
 
-        assertEquals("Marusja", driver.findElement(By.id("fb_name")).getAttribute("value"));
+        assertEquals("Marusja", driver.findElement(By.xpath("//*[@id=\"fb_name\"]")).getAttribute("value"));
         assertEquals("26", driver.findElement(By.id("fb_age")).getAttribute("value"));
         assertEquals("Spanish", driver.findElement(By.xpath("//*[@id=\"lang_check\"]/input[3]")).getAttribute("value"));
         assertEquals("female", driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/div[4]/input[2]")).getAttribute("value"));
-
-//        List<WebElement> radioButton = driver.findElements(By.className("w3-radio"));
-
-//
-////         "Choose your option" in "How do you like us?"
-//
-//        Select dropdown = new Select(driver.findElement(By.id("like_us")));
-//        assertEquals("Choose your option", dropdown.getFirstSelectedOption().getText());
-
         assertEquals("Ok, i guess", driver.findElement(By.id("option")).getAttribute("value"));
         assertEquals("Hello!!!", driver.findElement(By.className("w3-input")).getAttribute("value"));
 
