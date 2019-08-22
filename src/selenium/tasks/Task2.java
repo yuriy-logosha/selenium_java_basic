@@ -93,8 +93,10 @@ public class Task2 {
 //         check fields are filled correctly
         assertEquals("JanisBerzins", driver.findElement(By.id("name")).getText());
         assertEquals("20", driver.findElement(By.id("age")).getText());
-        assertEquals("English", driver.findElement(By.id("language")).getText());
+        assertEquals("Chinese", driver.findElement(By.id("language")).getText());
         assertEquals("male", driver.findElement(By.id("gender")).getText());
+        assertEquals("Why me?", driver.findElement(By.id("option")).getText());
+        assertEquals("no comments", driver.findElement(By.id("comment")).getText());
 //         check button colors
 //         (green with white letter and red with white letters)
     }
@@ -103,27 +105,54 @@ public class Task2 {
     public void yesOnWithNameFeedbackPage() throws Exception {
 //         TODO:
 //         enter only name
+        driver.findElement(By.id("fb_name")).sendKeys("Janis");
 //         click "Send"
+        driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/button")).click();
 //         click "Yes"
+        driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).click();
 //         check message text: "Thank you, NAME, for your feedback!"
+        assertEquals("Thank you, Janis, for your feedback!", driver.findElement(By.xpath("//*[@id=\"message\"]")).getText());
 //         color of text is white with green on the background
+        assertEquals("rgba(76, 175, 80, 1)", driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div")).getCssValue("background-color"));
+        assertEquals("rgba(255, 255, 255, 1)", driver.findElement(By.xpath("//*[@id=\"message\"]")).getCssValue("color"));
     }
 
     @Test
     public void yesOnWithoutNameFeedbackPage() throws Exception {
 //         TODO:
 //         click "Send" (without entering anything
+        driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/button")).click();
 //         click "Yes"
+        driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[1]")).click();
 //         check message text: "Thank you for your feedback!"
+        assertEquals("Thank you for your feedback!", driver.findElement(By.xpath("//*[@id=\"message\"]")).getText());
 //         color of text is white with green on the background
+        assertEquals("rgba(76, 175, 80, 1)", driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div")).getCssValue("background-color"));
+        assertEquals("rgba(255, 255, 255, 1)", driver.findElement(By.xpath("//*[@id=\"message\"]")).getCssValue("color"));
     }
 
     @Test
     public void noOnFeedbackPage() throws Exception {
 //         TODO:
 //         fill the whole form
+        driver.findElement(By.id("fb_name")).sendKeys("JanisBerzins");
+        driver.findElement(By.id("fb_age")).sendKeys("20");
+        driver.findElement(By.xpath("//*[@id=\"lang_check\"]/input[4]")).click();
+        driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/div[4]/input[1]")).click();
+        driver.findElement(By.xpath("//*[@id=\"like_us\"]/option[5]")).click();
+        driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/div[6]/textarea")).sendKeys("no comments");
+
 //         click "Send"
+        driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/button")).click();
 //         click "No"
+        driver.findElement(By.xpath("//*[@id=\"fb_thx\"]/div/div[2]/button[2]")).click();
 //         check fields are filled correctly
+        assertEquals("JanisBerzins", driver.findElement(By.id("fb_name")).getAttribute("value"));
+        assertEquals("20", driver.findElement(By.id("fb_age")).getAttribute("value"));
+        assertEquals("Chinese", driver.findElement(By.xpath("//*[@id=\"lang_check\"]/input[4]")).getAttribute("value"));
+        assertEquals("male", driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/div[4]/input[1]")).getAttribute("value"));
+        assertEquals("Why me?", driver.findElement(By.xpath("//*[@id=\"like_us\"]/option[5]")).getAttribute("value"));
+        assertEquals("no comments", driver.findElement(By.xpath("//*[@id=\"fb_form\"]/form/div[6]/textarea")).getAttribute("value"));
+
     }
 }
