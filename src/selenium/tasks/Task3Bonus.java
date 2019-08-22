@@ -118,8 +118,7 @@ public class Task3Bonus {
          * edit one of existing persons via the edit link
          * check the list again and that 2 people stayed the same and the one used was changed
          */
-        listPage.clickEdit();
-        th
+
     }
 
     @Test
